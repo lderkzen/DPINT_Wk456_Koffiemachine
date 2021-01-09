@@ -1,6 +1,6 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
-using Microsoft.Practices.ServiceLocation;
+using CommonServiceLocator;
 
 namespace Dpint_wk456_KoffieMachine.ViewModel
 {

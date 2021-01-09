@@ -8,6 +8,6 @@ namespace KoffieMachineDomain
 {
     public enum Amount
     {
-        Normal = 0, Few, Extra
+		None = 0, Normal, Few, Extra
     }
 }

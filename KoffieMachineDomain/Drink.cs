@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KoffieMachineDomain
 {
-    public abstract class Drink
+    public abstract class Drink : IDrink
     {
         public static readonly double SugarPrice = 0.1;
         public static readonly double MilkPrice = 0.15;

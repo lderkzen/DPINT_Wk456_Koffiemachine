@@ -13,9 +13,12 @@ namespace Dpint_wk456_KoffieMachine.ViewModel
     {
         private Dictionary<string, double> _cashOnCards;
         public ObservableCollection<string> LogText { get; private set; }
+		private DrinkFactory _factory;
 
         public MainViewModel()
         {
+			_factory = new DrinkFactory();
+
             _coffeeStrength = Strength.Normal;
             _sugarAmount = Amount.Normal;
             _milkAmount = Amount.Normal;
@@ -139,27 +142,10 @@ namespace Dpint_wk456_KoffieMachine.ViewModel
         public ICommand DrinkCommand => new RelayCommand<string>((drinkName) =>
         {
             _selectedDrink = null;
-            switch (drinkName)
-            {
-                case "Coffee":
-                    _selectedDrink = new Coffee() { DrinkStrength = CoffeeStrength };
-                    break;
-                case "Espresso":
-                    _selectedDrink = new Espresso();
-                    break;
-                case "Capuccino":
-                    _selectedDrink = new Capuccino();
-                    break;
-                case "Wiener Melange":
-                    _selectedDrink = new WienerMelange();
-                    break;
-                case "Café au Lait":
-                    _selectedDrink = new CafeAuLait();
-                    break;
-                default:
-                    LogText.Add($"Could not make {drinkName}, recipe not found.");
-                    break;
-            }
+
+			Dictionary<string, Amount> options = new Dictionary<string, Amount>();
+
+			//_factory.CreateDrink(drinkName, LogText,, _coffeeStrength);
             
             if(_selectedDrink != null)
             {
