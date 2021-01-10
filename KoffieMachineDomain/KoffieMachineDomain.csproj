@@ -30,30 +30,49 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="TeaAndChocoLibrary">
+      <HintPath>..\TeaAndChocoLibrary.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Amount.cs" />
-    <Compile Include="BaseDrinkDecorator.cs" />
-    <Compile Include="CafeAuLait.cs" />
-    <Compile Include="Capuccino.cs" />
-    <Compile Include="Coffee.cs" />
+    <Compile Include="Drinks\Chocolate.cs" />
+    <Compile Include="Drinks\ChocolateDeluxe.cs" />
+    <Compile Include="Drinks\IrishCoffee.cs" />
+    <Compile Include="Drinks\ItalianCoffee.cs" />
+    <Compile Include="Drinks\SpanishCoffee.cs" />
+    <Compile Include="Drinks\Tea.cs" />
+    <Compile Include="Enums\Amount.cs" />
+    <Compile Include="OptionDecorator\BaseDrinkDecorator.cs" />
+    <Compile Include="Drinks\CafeAuLait.cs" />
+    <Compile Include="Drinks\Capuccino.cs" />
+    <Compile Include="Drinks\Coffee.cs" />
     <Compile Include="DrinkFactory.cs" />
-    <Compile Include="Drink.cs" />
-    <Compile Include="Espresso.cs" />
-    <Compile Include="IDrink.cs" />
-    <Compile Include="MilkDecorator.cs" />
+    <Compile Include="Drinks\Drink.cs" />
+    <Compile Include="Drinks\Espresso.cs" />
+    <Compile Include="OptionDecorator\BlendDecorator.cs" />
+    <Compile Include="OptionDecorator\IDrink.cs" />
+    <Compile Include="OptionDecorator\MilkDecorator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Strength.cs" />
-    <Compile Include="SugarDecorator.cs" />
-    <Compile Include="WienerMelange.cs" />
+    <Compile Include="Enums\Strength.cs" />
+    <Compile Include="OptionDecorator\SugarDecorator.cs" />
+    <Compile Include="Drinks\WienerMelange.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="PaymentSystem.cs" />
+    <Compile Include="Strategy\Configurable.cs" />
+    <Compile Include="Strategy\CSVReader.cs" />
+    <Compile Include="Strategy\IConfigurationReader.cs" />
+    <Compile Include="Strategy\JSONReader.cs" />
+    <Compile Include="Strategy\XMLReader.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

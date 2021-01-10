@@ -8,7 +8,7 @@
         xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
         xmlns:helpers="clr-namespace:Dpint_wk456_KoffieMachine.Helpers"
         mc:Ignorable="d"
-        Title="MainWindow" Height="620" Width="900"
+        Title="MainWindow" Height="650" Width="900"
         DataContext="{Binding Main, Source={StaticResource Locator }}">
     <Window.Resources>
         <helpers:EnumToBooleanConverter x:Key="EnumToBool"/>
@@ -44,18 +44,18 @@
                   helpers:SelectorExtenders.IsAutoscroll="True"/>
         <StackPanel Grid.Column="1" Orientation="Vertical" Name="SelectionPanel" Margin="5">
             <Grid Name="StrengthsPanel">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center">
-                    <Label FontWeight="Bold">Strength</Label>
-                    <RadioButton GroupName="Strength" IsChecked="{Binding Path=CoffeeStrength, Converter={StaticResource EnumToBool}, ConverterParameter=Weak}">Weak</RadioButton>
-                    <RadioButton GroupName="Strength" IsChecked="{Binding Path=CoffeeStrength, Converter={StaticResource EnumToBool}, ConverterParameter=Normal}">Normal</RadioButton>
-                    <RadioButton GroupName="Strength" IsChecked="{Binding Path=CoffeeStrength, Converter={StaticResource EnumToBool}, ConverterParameter=Strong}">Strong</RadioButton>
-                </StackPanel>
-                <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+				<StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center">
+					<Label FontWeight="Bold">Strength</Label>
+					<RadioButton GroupName="Strength" IsChecked="{Binding Path=CoffeeStrength, Converter={StaticResource EnumToBool}, ConverterParameter=Weak}">Weak</RadioButton>
+					<RadioButton GroupName="Strength" IsChecked="{Binding Path=CoffeeStrength, Converter={StaticResource EnumToBool}, ConverterParameter=Normal}">Normal</RadioButton>
+					<RadioButton GroupName="Strength" IsChecked="{Binding Path=CoffeeStrength, Converter={StaticResource EnumToBool}, ConverterParameter=Strong}">Strong</RadioButton>
+				</StackPanel>
+				<StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center">
 					<Label FontWeight="Bold">Sugar</Label>
 					<RadioButton GroupName="Sugar" IsChecked="{Binding Path=SugarAmount, Converter={StaticResource EnumToBool}, ConverterParameter=None}">None</RadioButton>
 					<RadioButton GroupName="Sugar" IsChecked="{Binding Path=SugarAmount, Converter={StaticResource EnumToBool}, ConverterParameter=Few}">Few</RadioButton>
@@ -73,45 +73,33 @@
             <Separator />
             <Label Content="Coffee" FontWeight="Bold"/>
             <StackPanel Orientation="Horizontal" Name="CoffeePanel" HorizontalAlignment="Center" Margin="5">
-                <Button Command="{Binding DrinkCommand}" CommandParameter="Coffee" Style="{StaticResource DrinkButton}">
-                    <TextBlock>Coffee</TextBlock>
-                </Button>
-                <Button Command="{Binding DrinkWithSugarCommand}" CommandParameter="Coffee" Style="{StaticResource DrinkButton}">
-                    <TextBlock>Coffee + sugar</TextBlock>
-                </Button>
-                <Button Command="{Binding DrinkWithMilkCommand}" CommandParameter="Coffee" Style="{StaticResource DrinkButton}">
-                    <TextBlock>Coffee + milk</TextBlock>
-                </Button>
-                <Button Command="{Binding DrinkWithSugarAndMilkCommand}" CommandParameter="Coffee" Style="{StaticResource DrinkButton}">
-                    <TextBlock>Coffee + sugar + milk</TextBlock>
-                </Button>
-            </StackPanel>
+				<Button Command="{Binding DrinkCommand}" CommandParameter="Coffee" Style="{StaticResource DrinkButton}">
+					<TextBlock>Coffee</TextBlock>
+				</Button>
+				<Button Command="{Binding DrinkCommand}" CommandParameter="Irish Coffee" Style="{StaticResource DrinkButton}">
+					<TextBlock>Irish Coffee</TextBlock>
+				</Button>
+				<Button Command="{Binding DrinkCommand}" CommandParameter="Spanish Coffee" Style="{StaticResource DrinkButton}">
+					<TextBlock>Spanish Coffee</TextBlock>
+				</Button>
+				<Button Command="{Binding DrinkCommand}" CommandParameter="Italian Coffee" Style="{StaticResource DrinkButton}">
+					<TextBlock>Italian Coffee</TextBlock>
+				</Button>
+			</StackPanel>
             <Separator />
             <Label Content="Espresso" FontWeight="Bold"/>
             <StackPanel Orientation="Horizontal" Name="EsspressoPanel" HorizontalAlignment="Center" Margin="5">
-                <Button Command="{Binding DrinkCommand}" CommandParameter="Espresso" Style="{StaticResource DrinkButton}">
-                    <TextBlock>Espresso</TextBlock>
-                </Button>
-                <Button Command="{Binding DrinkWithSugarCommand}" CommandParameter="Espresso" Style="{StaticResource DrinkButton}">
-                    <TextBlock>Espresso + sugar</TextBlock>
-                </Button>
-                <Button Command="{Binding DrinkWithMilkCommand}" CommandParameter="Espresso" Style="{StaticResource DrinkButton}">
-                    <TextBlock>Espresso + milk</TextBlock>
-                </Button>
-                <Button Command="{Binding DrinkWithSugarAndMilkCommand}" CommandParameter="Espresso" Style="{StaticResource DrinkButton}">
-                    <TextBlock>Espresso + sugar + milk</TextBlock>
-                </Button>
-            </StackPanel>
+				<Button Command="{Binding DrinkCommand}" CommandParameter="Espresso" Style="{StaticResource DrinkButton}">
+					<TextBlock>Espresso</TextBlock>
+				</Button>
+			</StackPanel>
             <Separator />
             <Label Content="Specialties" FontWeight="Bold"/>
             <StackPanel Orientation="Horizontal" Name="SpecialtiesPanel" HorizontalAlignment="Center" Margin="5">
                 <Button Command="{Binding DrinkCommand}" CommandParameter="Capuccino" Style="{StaticResource DrinkButton}">
                     <TextBlock>Capuccino</TextBlock>
                 </Button>
-                <Button Command="{Binding DrinkWithSugarCommand}" CommandParameter="Capuccino" Style="{StaticResource DrinkButton}">
-                    <TextBlock>Capuccino + sugar</TextBlock>
-                </Button>
-                <Button Command="{Binding DrinkCommand}" CommandParameter="Wiener Melange" Style="{StaticResource DrinkButton}">
+				<Button Command="{Binding DrinkCommand}" CommandParameter="Wiener Melange" Style="{StaticResource DrinkButton}">
                     <TextBlock>Wiener Melange</TextBlock>
                 </Button>
                 <Button Command="{Binding DrinkCommand}" CommandParameter="Café au Lait" Style="{StaticResource DrinkButton}">
@@ -131,14 +119,14 @@
             <Separator />
             <Label Content="Tea" FontWeight="Bold"/>
             <StackPanel Orientation="Horizontal" Name="TeaPanel" HorizontalAlignment="Center" Margin="5">
-                <Button Command="{Binding DrinkCommand}" CommandParameter="Tea" Style="{StaticResource DrinkButton}">
+                <Button Command="{Binding TeaCommand}" CommandParameter="Tea" Style="{StaticResource DrinkButton}">
                     <TextBlock>Tea</TextBlock>
                 </Button>
-                <Button Command="{Binding DrinkWithSugarCommand}" CommandParameter="Tea" Style="{StaticResource DrinkButton}">
-                    <TextBlock>Tea + sugar</TextBlock>
-                </Button>
-                <TextBlock TextWrapping="WrapWithOverflow" Width="250">How to choose your teablend? //TODO: Make this work!</TextBlock>
-            </StackPanel>
+				<StackPanel Orientation="Vertical" Margin="5">
+					<TextBlock HorizontalAlignment="Center">Select your blend</TextBlock>
+					<ComboBox ItemsSource="{Binding Teablends}" SelectedValue="{Binding SelectedTeablend}" Margin="5"></ComboBox>
+				</StackPanel>
+			</StackPanel>
         </StackPanel>
         <StackPanel Grid.Column="2" Orientation="Vertical" Margin="5" Name="Payment">
             <Label HorizontalAlignment="Center" FontSize="14">Payment by card</Label>

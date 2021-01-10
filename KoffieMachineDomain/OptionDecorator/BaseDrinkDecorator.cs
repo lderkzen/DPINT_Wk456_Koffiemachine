@@ -7,7 +7,9 @@ namespace KoffieMachineDomain
 	{
 		public IDrink Drink;
 
-		public string Name { get => Drink.Name; }
+		public virtual string Name { get => Drink.Name; }
+
+		public List<string> CompatibleToppings { get => Drink.CompatibleToppings; set => Drink.CompatibleToppings = value; }
 
 		public BaseDrinkDecorator(IDrink drink)
 		{
@@ -25,7 +27,8 @@ namespace KoffieMachineDomain
 		{
 			if (Drink != null)
 				Drink.LogDrinkMaking(log);
-			throw new NullReferenceException();
+
+			return;
 		}
 	}
 }

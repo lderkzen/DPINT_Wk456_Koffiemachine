@@ -12,9 +12,10 @@ namespace KoffieMachineDomain
         public static readonly double MilkPrice = 0.15;
 
         protected const double BaseDrinkPrice = 1.0;
-        
+
         public abstract string Name { get; }
-        public abstract double GetPrice();
+		public abstract List<string> CompatibleToppings { get; set; }
+		public abstract double GetPrice();
 
         public virtual void LogDrinkMaking(ICollection<string> log)
         {

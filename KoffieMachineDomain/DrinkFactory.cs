@@ -1,12 +1,22 @@
-﻿using System;
+﻿using KoffieMachineDomain.Drinks;
+using KoffieMachineDomain.Strategy;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace KoffieMachineDomain
 {
 	public class DrinkFactory
 	{
-		public IDrink CreateDrink(string drinkName, ref ObservableCollection<string> logText, IDictionary<string, Amount> options, Strength strength = 0)
+		private Dictionary<string, Configurable> _configurables;
+
+		private IConfigurationReader _configReader;
+
+		public DrinkFactory()
+		{
+			_configReader = new CSVReader();
+			_configurables = _configReader.ReadConfigurations();
+		}
+
+		public IDrink CreateDrink(string drinkName, IDictionary<string, Amount> options, Strength strength = 0)
 		{
 			// Create the Drink
 			IDrink drink = null;
@@ -28,8 +38,20 @@ namespace KoffieMachineDomain
 				case "Café au Lait":
 					drink = new CafeAuLait();
 					break;
-				default:
-					logText.Add($"Could not make {drinkName}, recipe not found.");
+				case "Chocolate":
+					drink = new Chocolate();
+					break;
+				case "Chocolate Deluxe":
+					drink = new ChocolateDeluxe();
+					break;
+				case "Irish Coffee":
+					drink = new IrishCoffee(_configurables[drinkName]);
+					break;
+				case "Italian Coffee":
+					drink = new ItalianCoffee(_configurables[drinkName]);
+					break;
+				case "Spanish Coffee":
+					drink = new SpanishCoffee(_configurables[drinkName]);
 					break;
 			}
 			
@@ -40,10 +62,12 @@ namespace KoffieMachineDomain
 					switch (option.Key)
 					{
 						case "Sugar":
-							drink = new SugarDecorator(drink, option.Value);
+							if (drink.CompatibleToppings.Contains("Sugar"))
+								drink = new SugarDecorator(drink, option.Value);
 							break;
 						case "Milk":
-							drink = new MilkDecorator(drink, option.Value);
+							if (drink.CompatibleToppings.Contains("Milk"))
+								drink = new MilkDecorator(drink, option.Value);
 							break;
 					}
 				}

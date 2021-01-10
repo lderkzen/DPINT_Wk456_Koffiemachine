@@ -1,4 +1,6 @@
-﻿namespace KoffieMachineDomain
+﻿using System.Collections.Generic;
+
+namespace KoffieMachineDomain
 {
 	public class MilkDecorator : BaseDrinkDecorator
 	{
@@ -14,6 +16,13 @@
 		public override double GetPrice()
 		{
 			return base.GetPrice() + _fee;
+		}
+
+		public override void LogDrinkMaking(ICollection<string> log)
+		{
+			base.LogDrinkMaking(log);
+			log.Add($"Setting milk amount to {_amount}.");
+			log.Add("Adding sugar...");
 		}
 	}
 }
